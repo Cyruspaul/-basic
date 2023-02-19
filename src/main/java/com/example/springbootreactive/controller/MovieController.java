@@ -22,9 +22,8 @@ public class MovieController {
     @RequestMapping("/{id}")
     Mono<Movie> getmoviebyId(@PathVariable String id){
         System.out.println(id);
-        Mono<Movie> movieById = movieService.getMovieById(id);
-        System.out.println(movieById.just(new Movie("none")));
-        return movieById;
+        System.out.println(movieService.getMovieById(id).hasElement());
+        return movieService.getMovieById(id);
     }
 
     @RequestMapping("/all")
